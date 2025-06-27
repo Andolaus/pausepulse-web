@@ -1,44 +1,61 @@
-'use client';
-
 import { FaLevelUpAlt, FaAward, FaCalendarCheck, FaUserEdit } from 'react-icons/fa';
 
 export default function Features() {
   const features = [
     {
-      icon: <FaLevelUpAlt size={32} />,
+      icon: <FaLevelUpAlt size={32} />, // Increased icon size
       title: 'XP & Level System',
-      description: 'Earn XP for every pause and unlock new titles as you grow.',
+      description: 'Progress through levels, earn experience points, and unlock unique titles as you master your breath.',
     },
     {
-      icon: <FaAward size={32} />,
+      icon: <FaAward size={32} />, // Increased icon size
       title: 'Badges & Rewards',
-      description: 'Unlock achievements for milestones like streaks and challenges.',
+      description: 'Achieve special badges for reaching milestones, maintaining streaks, and completing challenges.',
     },
     {
-      icon: <FaCalendarCheck size={32} />,
-      title: 'Daily Goals & Streaks',
-      description: 'Build momentum with daily breathing goals and streak tracking.',
+      icon: <FaCalendarCheck size={32} />, // Increased icon size
+      title: 'Daily & Weekly Goals',
+      description: 'Stay consistent with personalized daily goals and engaging weekly challenges to build lasting habits.',
     },
     {
-      icon: <FaUserEdit size={32} />,
+      icon: <FaUserEdit size={32} />, // Increased icon size
       title: 'Personalized Experience',
-      description: 'Choose voice, background sounds, and breathing style to suit you.',
+      description: 'Tailor your journey with customizable breathing styles, voice options, and immersive visual themes.',
     },
   ];
 
   return (
-    <section className="bg-white py-20 px-6 text-center">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl font-bold mb-12">Core Features</h2>
-        <div className="grid md:grid-cols-4 sm:grid-cols-2 gap-8">
-          {features.map((feature, index) => (
-            <div
-              key={index}
-              className="p-6 rounded-xl shadow-sm border hover:shadow-md transition"
+    <section className="bg-white py-24 px-6 sm:py-32 lg:px-8" id="features">
+      <div className="max-w-6xl mx-auto text-center">
+        {/* Section Heading: More impactful */}
+        <h2 className="text-4xl font-extrabold text-gray-900 sm:text-5xl mb-16 leading-tight">
+          Unlock Your Calm: Core Features
+        </h2>
+        
+        {/* Features Grid: Responsive layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+          {features.map((f, i) => (
+            <div 
+              key={i} 
+              className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 
+                         flex flex-col items-center justify-start 
+                         hover:shadow-xl hover:translate-y-[-6px] transition-all duration-300 ease-in-out"
             >
-              <div className="text-indigo-600 mb-4 flex justify-center">{feature.icon}</div>
-              <h3 className="text-lg font-semibold mb-2">{feature.title}</h3>
-              <p className="text-gray-600 text-sm">{feature.description}</p>
+              {/* Icon Container: Stylish circle background for icons */}
+              <div className="mb-6 p-4 rounded-full inline-flex items-center justify-center 
+                              bg-indigo-500 text-white shadow-md">
+                {f.icon}
+              </div>
+              
+              {/* Feature Title: More prominent */}
+              <h3 className="text-xl font-bold mb-2 text-gray-800">
+                {f.title}
+              </h3>
+              
+              {/* Feature Description: Improved readability */}
+              <p className="text-base text-gray-600 leading-relaxed">
+                {f.description}
+              </p>
             </div>
           ))}
         </div>
