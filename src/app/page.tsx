@@ -1,4 +1,3 @@
-// src/app/page.tsx
 'use client';
 
 import { useState } from 'react';
@@ -11,9 +10,10 @@ import Features from './components/Features';
 import Premium from './components/Premium';
 import DownloadCTA from './components/DownloadCTA';
 import Footer from './components/Footer';
+import Contact from './components/Contact';
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState<'about' | 'how' | 'features' | 'pricing' | null>(null);
+  const [activeSection, setActiveSection] = useState<'about' | 'how' | 'features' | 'pricing' | 'contact' | null>(null);
 
   const renderSection = () => {
     switch (activeSection) {
@@ -25,6 +25,8 @@ export default function Home() {
         return <Features key="features" />;
       case 'pricing':
         return <Premium key="pricing" />;
+      case 'contact':
+        return <Contact key="contact" />;
       default:
         return null;
     }
@@ -33,19 +35,19 @@ export default function Home() {
   return (
     <>
       <Header onNavigate={setActiveSection} />
-      <div className="h-8" />
+      <div className="h-24" />
       <main className="bg-white text-gray-900 dark:bg-gray-900 dark:text-white min-h-screen">
         <AnimatePresence mode="wait">
           {!activeSection && (
-            <motion.div className="pt-28 min-h-[60vh]">
-              <div className="pt-32 pb-20"><Hero /></div>
+            <motion.div className="min-h-[60vh]">
+              <Hero />
             </motion.div>
           )}
         </AnimatePresence>
 
         <AnimatePresence mode="wait">
           {activeSection && (
-            <motion.div className="pt-28 min-h-[60vh]">
+            <motion.div className="min-h-[60vh]">
               {renderSection()}
               <DownloadCTA />
             </motion.div>

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { HiMenu, HiX } from 'react-icons/hi';
 
 type HeaderProps = {
-  onNavigate: (section: 'about' | 'how' | 'features' | 'pricing' | null) => void;
+  onNavigate: (section: 'about' | 'how' | 'features' | 'pricing' | 'contact' | null) => void;
 };
 
 export default function Header({ onNavigate }: HeaderProps) {
@@ -46,7 +46,7 @@ export default function Header({ onNavigate }: HeaderProps) {
             Pricing
           </button>
           <button
-            onClick={() => handleNavClick(null)}
+            onClick={() => handleNavClick('contact')}
             className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50 rounded px-2 -mx-2 py-1"
           >
             Contact
@@ -94,7 +94,7 @@ export default function Header({ onNavigate }: HeaderProps) {
               Pricing
             </button>
             <button
-              onClick={() => handleNavClick(null)}
+              onClick={() => handleNavClick('contact')}
               className="py-2 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50 rounded px-2 -mx-2"
             >
               Contact
