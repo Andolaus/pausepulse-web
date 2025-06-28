@@ -25,10 +25,10 @@ export default function Features() {
   ];
 
   return (
-    <section className="bg-white py-24 px-6 sm:py-32 lg:px-8" id="features">
-      <div className="max-w-6xl mx-auto text-center">
-        {/* Section Heading: More impactful */}
-        <h2 className="text-4xl font-extrabold text-gray-900 sm:text-5xl mb-16 leading-tight">
+    <section className="bg-white dark:bg-gray-900 py-24 px-6 sm:py-32 lg:px-8 border-b border-gray-100 dark:border-gray-800" id="features">
+      <div className="max-w-6xl mx-auto text-center"> {/* Økt max-width for litt mer plass */}
+        {/* Section Heading: More impactful, consistent with Header's dark text / light text */}
+        <h2 className="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl mb-16 leading-tight">
           Unlock Your Calm: Core Features
         </h2>
         
@@ -37,23 +37,23 @@ export default function Features() {
           {features.map((f, i) => (
             <div 
               key={i} 
-              className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 
-                         flex flex-col items-center justify-start 
-                         hover:shadow-xl hover:translate-y-[-6px] transition-all duration-300 ease-in-out"
+              className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg border border-gray-100 dark:border-gray-700
+                         flex flex-col items-center justify-start text-center
+                         hover:shadow-xl hover:-translate-y-2 transition-all duration-300 ease-in-out" // Justert translate-y for mer standard animasjon
             >
-              {/* Icon Container: Stylish circle background for icons */}
+              {/* Icon Container: Stylish circle background for icons, now in emerald */}
               <div className="mb-6 p-4 rounded-full inline-flex items-center justify-center 
-                              bg-indigo-500 text-white shadow-md">
+                              bg-emerald-500 text-white dark:bg-emerald-600 shadow-md"> {/* Farge endret til emerald, lagt til dark-variant */}
                 {f.icon}
               </div>
               
-              {/* Feature Title: More prominent */}
-              <h3 className="text-xl font-bold mb-2 text-gray-800">
+              {/* Feature Title: More prominent, consistent with light/dark */}
+              <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white"> {/* Justert farge til gray-900 for konsekvens */}
                 {f.title}
               </h3>
               
-              {/* Feature Description: Improved readability */}
-              <p className="text-base text-gray-600 leading-relaxed">
+              {/* Feature Description: Improved readability, consistent with light/dark */}
+              <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed"> {/* Justert farge til gray-700 for konsekvens */}
                 {f.description}
               </p>
             </div>
