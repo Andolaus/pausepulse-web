@@ -1,5 +1,6 @@
 import './globals.css';
 import { Outfit } from 'next/font/google';
+import type { Metadata } from 'next';
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -8,7 +9,7 @@ const outfit = Outfit({
   display: 'swap',
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'PausePulse – Breathe. Grow. Level Up.',
   description:
     'PausePulse is a mindfulness app that turns breathing breaks into a gamified, rewarding habit. Launching soon on iOS and Android.',
@@ -32,12 +33,15 @@ export const metadata = {
     width: 'device-width',
     initialScale: 1,
   },
+  themeColor: '#ffffff',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={outfit.variable}>
-      <body className="bg-white text-gray-900 font-sans">{children}</body>
+    <html lang="en" className={`${outfit.variable} scroll-smooth`}>
+      <body className="bg-white text-gray-900 font-sans dark:bg-gray-900 dark:text-white">
+        {children}
+      </body>
     </html>
   );
 }

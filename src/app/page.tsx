@@ -13,7 +13,9 @@ import Footer from './components/Footer';
 import Contact from './components/Contact';
 
 export default function Home() {
-  const [activeSection, setActiveSection] = useState<'about' | 'how' | 'features' | 'pricing' | 'contact' | null>(null);
+  const [activeSection, setActiveSection] = useState<
+    'about' | 'how' | 'features' | 'pricing' | 'contact' | null
+  >(null);
 
   const renderSection = () => {
     switch (activeSection) {
@@ -37,23 +39,24 @@ export default function Home() {
       <Header onNavigate={setActiveSection} />
       <div className="h-24" />
       <main className="bg-white text-gray-900 dark:bg-gray-900 dark:text-white min-h-screen">
-        <AnimatePresence mode="wait">
-          {!activeSection && (
-            <motion.div className="min-h-[60vh]">
-              <Hero />
-            </motion.div>
-          )}
-        </AnimatePresence>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <AnimatePresence mode="wait">
+            {!activeSection && (
+              <motion.div className="min-h-[60vh]">
+                <Hero />
+              </motion.div>
+            )}
+          </AnimatePresence>
 
-        <AnimatePresence mode="wait">
-          {activeSection && (
-            <motion.div className="min-h-[60vh]">
-              {renderSection()}
-              <DownloadCTA />
-            </motion.div>
-          )}
-        </AnimatePresence>
-
+          <AnimatePresence mode="wait">
+            {activeSection && (
+              <motion.div className="min-h-[60vh] space-y-24">
+                {renderSection()}
+                <DownloadCTA />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
         <Footer />
       </main>
     </>
