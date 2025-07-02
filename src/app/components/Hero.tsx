@@ -1,8 +1,10 @@
 'use client';
 
-import Link from 'next/link';
+type HeroProps = {
+  onNavigate: (section: 'about' | 'how' | 'features' | 'pricing' | 'contact' | 'earlyaccess' | null) => void;
+};
 
-export default function Hero() {
+export default function Hero({ onNavigate }: HeroProps) {
   return (
     <section className="bg-gradient-to-br from-white to-emerald-50 dark:from-gray-900 dark:to-gray-800 py-32 lg:py-44">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
@@ -20,13 +22,15 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-col sm:flex-row sm:justify-start items-center gap-4">
-            <Link
-              href="#"
+            <button
+              onClick={() => onNavigate('earlyaccess')}
               className="bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white px-6 py-3 rounded-full font-semibold shadow-md transition"
             >
               Get Early Access
-            </Link>
-            <span className="text-sm text-gray-500 dark:text-gray-400">Launching soon on iOS & Android</span>
+            </button>
+            <span className="text-sm text-gray-500 dark:text-gray-400">
+              Launching soon on iOS & Android
+            </span>
           </div>
         </div>
 

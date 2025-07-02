@@ -4,7 +4,9 @@ import { useState } from 'react';
 import { HiMenu, HiX } from 'react-icons/hi';
 
 type HeaderProps = {
-  onNavigate: (section: 'about' | 'how' | 'features' | 'pricing' | 'contact' | null) => void;
+  onNavigate: (
+    section: 'about' | 'how' | 'features' | 'pricing' | 'contact' | 'earlyaccess' | null
+  ) => void;
 };
 
 export default function Header({ onNavigate }: HeaderProps) {
@@ -27,44 +29,25 @@ export default function Header({ onNavigate }: HeaderProps) {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex gap-8 text-sm font-medium text-gray-700 dark:text-gray-300">
-          <button
-            onClick={() => handleNavClick('how')}
-            className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50 rounded px-2 -mx-2 py-1"
-          >
-            How it works
-          </button>
-          <button
-            onClick={() => handleNavClick('features')}
-            className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50 rounded px-2 -mx-2 py-1"
-          >
-            Features
-          </button>
-          <button
-            onClick={() => handleNavClick('pricing')}
-            className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50 rounded px-2 -mx-2 py-1"
-          >
-            Pricing
-          </button>
-          <button
-            onClick={() => handleNavClick('contact')}
-            className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50 rounded px-2 -mx-2 py-1"
-          >
-            Contact
-          </button>
+          <button onClick={() => handleNavClick('about')}>About Me</button>
+          <button onClick={() => handleNavClick('how')}>How it works</button>
+          <button onClick={() => handleNavClick('features')}>Features</button>
+          <button onClick={() => handleNavClick('pricing')}>Pricing</button>
+          <button onClick={() => handleNavClick('contact')}>Contact</button>
         </nav>
 
-        {/* Desktop CTA Button */}
-        <a
-          href="#"
-          className="hidden sm:inline-block bg-emerald-600 dark:bg-emerald-500 text-white px-6 py-3 rounded-full text-sm font-semibold shadow-md hover:bg-emerald-700 dark:hover:bg-emerald-600 hover:scale-105 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-emerald-300 focus:ring-opacity-75"
+        {/* Desktop CTA */}
+        <button
+          onClick={() => handleNavClick('earlyaccess')}
+          className="hidden sm:inline-block bg-emerald-600 dark:bg-emerald-500 text-white px-6 py-3 rounded-full text-sm font-semibold shadow-md hover:bg-emerald-700 dark:hover:bg-emerald-600 transition"
         >
           Join Early Access
-        </a>
+        </button>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu Toggle */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-gray-800 dark:text-gray-200 text-3xl p-1 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50"
+          className="md:hidden text-gray-800 dark:text-gray-200 text-3xl p-1 rounded-md"
           aria-label="Toggle menu"
         >
           {menuOpen ? <HiX /> : <HiMenu />}
@@ -73,38 +56,19 @@ export default function Header({ onNavigate }: HeaderProps) {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-800 shadow-lg px-6 pb-6 border-t border-gray-100 dark:border-gray-700">
-          <nav className="flex flex-col gap-4 text-base text-gray-700 dark:text-gray-200 pt-4">
+        <div className="md:hidden bg-white dark:bg-gray-800 shadow-lg px-6 pb-6 pt-4 border-t border-gray-100 dark:border-gray-700">
+          <nav className="flex flex-col gap-4 text-base text-gray-700 dark:text-gray-200">
+            <button onClick={() => handleNavClick('about')}>About Me</button>
+            <button onClick={() => handleNavClick('how')}>How it works</button>
+            <button onClick={() => handleNavClick('features')}>Features</button>
+            <button onClick={() => handleNavClick('pricing')}>Pricing</button>
+            <button onClick={() => handleNavClick('contact')}>Contact</button>
             <button
-              onClick={() => handleNavClick('how')}
-              className="py-2 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50 rounded px-2 -mx-2"
-            >
-              How it works
-            </button>
-            <button
-              onClick={() => handleNavClick('features')}
-              className="py-2 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50 rounded px-2 -mx-2"
-            >
-              Features
-            </button>
-            <button
-              onClick={() => handleNavClick('pricing')}
-              className="py-2 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50 rounded px-2 -mx-2"
-            >
-              Pricing
-            </button>
-            <button
-              onClick={() => handleNavClick('contact')}
-              className="py-2 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-opacity-50 rounded px-2 -mx-2"
-            >
-              Contact
-            </button>
-            <a
-              href="#"
-              className="mt-4 bg-emerald-600 dark:bg-emerald-500 text-white text-center py-3 rounded-full font-semibold shadow-md hover:bg-emerald-700 dark:hover:bg-emerald-600 transition-colors duration-200 focus:outline-none focus:ring-4 focus:ring-emerald-300 focus:ring-opacity-75"
+              onClick={() => handleNavClick('earlyaccess')}
+              className="mt-4 bg-emerald-600 dark:bg-emerald-500 text-white text-center py-3 rounded-full font-semibold shadow-md hover:bg-emerald-700 dark:hover:bg-emerald-600 transition"
             >
               Join Early Access
-            </a>
+            </button>
           </nav>
         </div>
       )}

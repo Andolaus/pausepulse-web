@@ -5,22 +5,34 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import About from './components/About';
+import AboutMe from './components/AboutMe';
 import HowItWorks from './components/HowItWorks';
 import Features from './components/Features';
 import Premium from './components/Premium';
 import DownloadCTA from './components/DownloadCTA';
 import Footer from './components/Footer';
 import Contact from './components/Contact';
+import EarlyAccess from './components/EarlyAccess';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import TermsOfService from './components/TermsOfService';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState<
-    'about' | 'how' | 'features' | 'pricing' | 'contact' | null
+    'about' |
+    'how' |
+    'features' |
+    'pricing' |
+    'contact' |
+    'earlyaccess' |
+    'privacy' |
+    'terms' |
+    null
   >(null);
 
   const renderSection = () => {
     switch (activeSection) {
       case 'about':
-        return <About key="about" />;
+        return <AboutMe key="about" onNavigate={setActiveSection} />;
       case 'how':
         return <HowItWorks key="how" />;
       case 'features':
@@ -29,6 +41,12 @@ export default function Home() {
         return <Premium key="pricing" />;
       case 'contact':
         return <Contact key="contact" />;
+      case 'earlyaccess':
+        return <EarlyAccess key="earlyaccess" />;
+      case 'privacy':
+        return <PrivacyPolicy key="privacy" />;
+      case 'terms':
+        return <TermsOfService key="terms" />;
       default:
         return null;
     }
@@ -43,7 +61,7 @@ export default function Home() {
           <AnimatePresence mode="wait">
             {!activeSection && (
               <motion.div className="min-h-[60vh]">
-                <Hero />
+                <Hero onNavigate={setActiveSection} />
               </motion.div>
             )}
           </AnimatePresence>
@@ -52,12 +70,11 @@ export default function Home() {
             {activeSection && (
               <motion.div className="min-h-[60vh] space-y-24">
                 {renderSection()}
-                <DownloadCTA />
               </motion.div>
             )}
           </AnimatePresence>
         </div>
-        <Footer />
+        <Footer onNavigate={setActiveSection} />
       </main>
     </>
   );

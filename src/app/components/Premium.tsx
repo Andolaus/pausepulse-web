@@ -54,22 +54,6 @@ export default function Premium() {
             </tbody>
           </table>
         </div>
-        
-        <div className="mt-16">
-          <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Ready to experience the full power of PausePulse?</h3>
-          <a
-            href="#" // This should link to your premium subscription page or modal
-            className="inline-block bg-emerald-600 dark:bg-emerald-500 text-white
-                       px-10 py-5 rounded-full font-bold text-lg shadow-xl
-                       hover:bg-emerald-700 dark:hover:bg-emerald-600 hover:scale-105 transition-all duration-300 ease-in-out
-                       focus:outline-none focus:ring-4 focus:ring-emerald-300 focus:ring-opacity-75"
-          >
-            Go Premium Today!
-          </a>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-4">
-            No credit card required for the free version. Cancel anytime.
-          </p>
-        </div>
       </div>
     </section>
   );
