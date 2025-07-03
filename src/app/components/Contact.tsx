@@ -31,7 +31,7 @@ export default function Contact() {
 
       setSubmitted(true);
       setForm({ name: '', email: '', message: '' });
-    } catch (err) {
+    } catch {
       alert('Something went wrong. Please try again later.');
     } finally {
       setIsSubmitting(false);
@@ -50,11 +50,11 @@ export default function Contact() {
           className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-6 flex items-center justify-center gap-4"
         >
           <FaPaperPlane className="text-emerald-600 dark:text-emerald-400 text-4xl sm:text-5xl" role="img" aria-label="Paper plane icon" />
-          Let's Connect
+          Let&apos;s Connect
         </h2>
 
         <p className="text-lg text-gray-700 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
-          Have a question, feedback, or just want to say hi? I’d love to hear from you.
+          Have a question, feedback, or just want to say hi? I&apos;d love to hear from you.
         </p>
 
         <div className="bg-white dark:bg-gray-800 p-8 sm:p-12 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 max-w-2xl mx-auto">

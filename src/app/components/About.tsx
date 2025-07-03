@@ -19,7 +19,7 @@ export default function About() {
           id="about-heading"
           className="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl mb-8"
         >
-          The Problem We're Solving
+          The Problem We&apos;re Solving
         </h2>
 
         {/* Description paragraphs */}
@@ -27,7 +27,7 @@ export default function About() {
           We all know that short, mindful breathing breaks can significantly reduce stress and sharpen focus.
         </p>
         <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-4 md:text-xl">
-          Yet, in our fast-paced world, it's incredibly easy to forget to take them.
+          Yet, in our fast-paced world, it&apos;s incredibly easy to forget to take them.
         </p>
         <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-8 md:text-xl">
           Most mindfulness apps out there feel passive, clinical, or simply uninspiring.

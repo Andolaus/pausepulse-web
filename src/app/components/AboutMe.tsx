@@ -25,7 +25,7 @@ export default function AboutMe({ onNavigate }: AboutMeProps) {
         </h2>
 
         <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-          Hi there — I'm a developer from Norway, building my very first mobile app. I’ve long been drawn to mindfulness,
+          Hi there — I&apos;m a developer from Norway, building my very first mobile app. I&apos;ve long been drawn to mindfulness,
           breathing techniques, and the idea that small habits can shift how we feel and live.
         </p>
 
@@ -35,7 +35,7 @@ export default function AboutMe({ onNavigate }: AboutMeProps) {
         </p>
 
         <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 leading-relaxed">
-          If you ever have feedback, questions, or just want to share how you're using the app — I’d love to hear from you.
+          If you ever have feedback, questions, or just want to share how you&apos;re using the app — I&apos;d love to hear from you.
         </p>
 
         {/* Reach Out button */}

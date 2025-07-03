@@ -22,8 +22,9 @@ export default function EarlyAccess() {
 
       setSubmitted(true);
       setEmail('');
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Something went wrong';
+      setError(message);
     }
   };
 
@@ -74,7 +75,7 @@ export default function EarlyAccess() {
             </form>
           ) : (
             <p className="text-emerald-700 dark:text-emerald-400 font-medium text-lg">
-              Thank you! You're on the list 🎉
+              Thank you! You&apos;re on the list 🎉
             </p>
           )}
 
