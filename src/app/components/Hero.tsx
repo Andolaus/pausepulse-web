@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 type HeroProps = {
   onNavigate: (section: 'about' | 'how' | 'features' | 'pricing' | 'contact' | 'earlyaccess' | null) => void;
 };
@@ -8,7 +10,7 @@ export default function Hero({ onNavigate }: HeroProps) {
   return (
     <section className="bg-gradient-to-br from-white to-emerald-50 dark:from-gray-900 dark:to-gray-800 py-32 lg:py-44">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        
+
         {/* Left column: Text */}
         <div className="text-center md:text-left">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white leading-tight space-y-2 mb-6">
@@ -34,11 +36,16 @@ export default function Hero({ onNavigate }: HeroProps) {
           </div>
         </div>
 
-        {/* Right column: App preview box */}
+        {/* Right column: App preview image */}
         <div className="flex justify-center md:justify-end">
-          <div className="w-[250px] h-[520px] bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-3xl shadow-xl flex items-center justify-center text-gray-400 text-sm italic">
-            [ App Preview Coming Soon ]
-          </div>
+          <Image
+            src="/images/hero-app-preview.png"
+            alt="PausePulse app preview"
+            width={450}
+            height={800}
+            priority
+            className="w-[300px] sm:w-[340px] md:w-[380px] lg:w-[420px] mx-auto md:mx-0 drop-shadow-2xl transition-all duration-300"
+          />
         </div>
       </div>
     </section>
