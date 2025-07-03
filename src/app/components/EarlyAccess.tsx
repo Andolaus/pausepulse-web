@@ -28,39 +28,62 @@ export default function EarlyAccess() {
   };
 
   return (
-    <section id="earlyaccess" className="py-32 lg:py-44 px-6 sm:px-8 lg:px-12 text-center">
+    <section
+      id="earlyaccess"
+      aria-labelledby="earlyaccess-heading"
+      className="py-32 lg:py-44 px-6 sm:px-8 lg:px-12 text-center"
+    >
       <div className="max-w-2xl mx-auto space-y-8">
-        <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white">
+        <h2
+          id="earlyaccess-heading"
+          className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white"
+        >
           Join the Early Access List
         </h2>
         <p className="text-lg text-gray-700 dark:text-gray-300">
           Enter your email and be the first to know when PausePulse launches.
         </p>
 
-        {!submitted ? (
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <input
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
-              className="w-full sm:w-auto px-6 py-3 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm"
-            />
-            <button
-              type="submit"
-              className="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white rounded-full font-semibold shadow-md transition"
+        <div aria-live="polite">
+          {!submitted ? (
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
-              Notify Me
-            </button>
-          </form>
-        ) : (
-          <p className="text-emerald-700 dark:text-emerald-400 font-medium text-lg">
-            Thank you! You're on the list 🎉
-          </p>
-        )}
+              <div className="w-full sm:w-auto text-left">
+                <label htmlFor="email" className="sr-only">
+                  Email address
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@example.com"
+                  className="w-full sm:w-auto px-6 py-3 rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-800 text-gray-900 dark:text-white shadow-sm"
+                />
+              </div>
+              <button
+                type="submit"
+                aria-label="Subscribe to early access list"
+                className="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white rounded-full font-semibold shadow-md transition"
+              >
+                Notify Me
+              </button>
+            </form>
+          ) : (
+            <p className="text-emerald-700 dark:text-emerald-400 font-medium text-lg">
+              Thank you! You're on the list 🎉
+            </p>
+          )}
 
-        {error && <p className="text-red-500 text-sm">{error}</p>}
+          {error && (
+            <p className="text-red-500 text-sm mt-2" role="alert">
+              {error}
+            </p>
+          )}
+        </div>
       </div>
     </section>
   );

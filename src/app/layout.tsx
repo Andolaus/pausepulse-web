@@ -1,6 +1,6 @@
 import './globals.css';
 import { Outfit } from 'next/font/google';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -11,9 +11,8 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   title: 'PausePulse – Breathe. Grow. Level Up.',
-  description:
-    'PausePulse is a mindfulness app that turns breathing breaks into a gamified, rewarding habit. Launching soon on iOS and Android.',
-  metadataBase: new URL('https://pausepulse.app'), // ← bytt til riktig domene
+  description: 'PausePulse is a mindfulness app that turns breathing breaks into a gamified, rewarding habit. Launching soon on iOS and Android.',
+  metadataBase: new URL('https://pausepulse.app'),
   openGraph: {
     title: 'PausePulse',
     description: 'Mindful breaks, gamified. Coming soon.',
@@ -29,11 +28,30 @@ export const metadata: Metadata = {
     ],
     type: 'website',
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
+  twitter: {
+    card: 'summary_large_image',
+    title: 'PausePulse – Breathe. Grow. Level Up.',
+    description: 'PausePulse is a mindfulness app that turns breathing breaks into a gamified, rewarding habit.',
+    creator: '@yourtwitterhandle',
+    images: ['/og-image.jpg'],
   },
-  themeColor: '#ffffff',
+  icons: {
+    icon: '/favicon.png',
+  },
+  alternates: {
+    canonical: 'https://pausepulse.app',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  // ❌ themeColor er fjernet herfra
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#ffffff', // ✅ flyttet hit
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

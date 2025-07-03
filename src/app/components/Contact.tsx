@@ -42,14 +42,19 @@ export default function Contact() {
     <section
       className="bg-gradient-to-br from-emerald-50 to-purple-50 dark:from-gray-950 dark:to-purple-900 py-24 px-6 sm:py-32 lg:px-8 border-t border-gray-100 dark:border-gray-800"
       id="contact"
+      aria-labelledby="contact-heading"
     >
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-6 flex items-center justify-center gap-4">
-          <FaPaperPlane className="text-emerald-600 dark:text-emerald-400 text-4xl sm:text-5xl" />
+        <h2
+          id="contact-heading"
+          className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-6 flex items-center justify-center gap-4"
+        >
+          <FaPaperPlane className="text-emerald-600 dark:text-emerald-400 text-4xl sm:text-5xl" role="img" aria-label="Paper plane icon" />
           Let's Connect
         </h2>
+
         <p className="text-lg text-gray-700 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
-          Have a question, feedback, or just want to say hi? I'd love to hear from you.
+          Have a question, feedback, or just want to say hi? I’d love to hear from you.
         </p>
 
         <div className="bg-white dark:bg-gray-800 p-8 sm:p-12 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 max-w-2xl mx-auto">
@@ -104,11 +109,14 @@ export default function Contact() {
               </button>
             </form>
           ) : (
-            <div className="flex flex-col items-center justify-center p-8 bg-emerald-50 dark:bg-emerald-900 rounded-2xl text-emerald-800 dark:text-emerald-200 shadow-inner">
-              <FaCheckCircle className="text-5xl mb-4" />
+            <div
+              className="flex flex-col items-center justify-center p-8 bg-emerald-50 dark:bg-emerald-900 rounded-2xl text-emerald-800 dark:text-emerald-200 shadow-inner"
+              aria-live="polite"
+            >
+              <FaCheckCircle className="text-5xl mb-4" role="img" aria-label="Success checkmark" />
               <p className="text-2xl font-bold mb-2">Message Sent!</p>
               <p className="text-lg text-center mb-4">
-                Thank you for reaching out. I'll get back to you as soon as possible.
+                Thank you for reaching out. I&apos;ll get back to you as soon as possible.
               </p>
               <button
                 onClick={() => setSubmitted(false)}
