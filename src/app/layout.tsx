@@ -1,6 +1,7 @@
 import './globals.css';
 import { Outfit } from 'next/font/google';
 import type { Metadata, Viewport } from 'next';
+import { Analytics } from '@vercel/analytics/react';
 
 const outfit = Outfit({
   subsets: ['latin'],
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
     images: ['/og-image.jpg'],
   },
   icons: {
-    icon: '/favicon.png',
+    icon: '/favicon.ico',
   },
   alternates: {
     canonical: 'https://pausepulse.app',
@@ -59,6 +60,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${outfit.variable} scroll-smooth`}>
       <body className="bg-white text-gray-900 font-sans dark:bg-gray-900 dark:text-white">
         {children}
+        <Analytics />
       </body>
     </html>
   );
