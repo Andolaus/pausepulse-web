@@ -7,6 +7,7 @@ export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -14,25 +15,33 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (isSubmitting) return; // unngå dobbelt-innsending
     setIsSubmitting(true);
+    setError(null);
 
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
 
+      // prøv å hente tilbake feilmelding fra server
+      const data = await response.json().catch(() => ({} as any));
+
       if (!response.ok) {
-        throw new Error('Failed to send message');
+        const message =
+          data?.error ||
+          data?.message ||
+          data?.errors?.[0]?.message ||
+          'Failed to send message';
+        throw new Error(message);
       }
 
       setSubmitted(true);
       setForm({ name: '', email: '', message: '' });
-    } catch {
-      alert('Something went wrong. Please try again later.');
+    } catch (err: any) {
+      setError(err?.message || 'Something went wrong. Please try again later.');
     } finally {
       setIsSubmitting(false);
     }
@@ -59,7 +68,18 @@ export default function Contact() {
 
         <div className="bg-white dark:bg-gray-800 p-8 sm:p-12 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 max-w-2xl mx-auto">
           {!submitted ? (
-            <form onSubmit={handleSubmit} className="grid gap-6 text-left">
+            <form onSubmit={handleSubmit} className="grid gap-6 text-left" noValidate>
+              {/* Feilmelding fra server */}
+              {error && (
+                <div
+                  className="rounded-xl border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/30 p-4 text-red-800 dark:text-red-200"
+                  role="alert"
+                  aria-live="polite"
+                >
+                  {error}
+                </div>
+              )}
+
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-900 dark:text-white mb-2">Name</label>
                 <input
@@ -72,6 +92,7 @@ export default function Contact() {
                   className="w-full px-5 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-200"
                 />
               </div>
+
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-gray-900 dark:text-white mb-2">Email</label>
                 <input
@@ -84,6 +105,7 @@ export default function Contact() {
                   className="w-full px-5 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-200"
                 />
               </div>
+
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-gray-900 dark:text-white mb-2">Message</label>
                 <textarea
@@ -96,6 +118,7 @@ export default function Contact() {
                   className="w-full px-5 py-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-700 text-gray-900 dark:text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 transition-all duration-200"
                 />
               </div>
+
               <button
                 type="submit"
                 disabled={isSubmitting}
@@ -104,6 +127,7 @@ export default function Contact() {
                     ? 'bg-gray-400 dark:bg-gray-600 cursor-not-allowed'
                     : 'bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600'
                 }`}
+                aria-busy={isSubmitting}
               >
                 {isSubmitting ? 'Sending Message...' : 'Send Message'}
               </button>
