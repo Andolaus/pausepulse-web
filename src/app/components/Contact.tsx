@@ -15,7 +15,7 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (isSubmitting) return; // unngå dobbelt-innsending
+    if (isSubmitting) return;
     setIsSubmitting(true);
     setError(null);
 
@@ -26,22 +26,33 @@ export default function Contact() {
         body: JSON.stringify(form),
       });
 
-      // prøv å hente tilbake feilmelding fra server
-      const data = await response.json().catch(() => ({} as any));
+      let data: unknown = null;
+      try {
+        data = await response.json();
+      } catch {
+        /* tom body */
+      }
 
       if (!response.ok) {
-        const message =
-          data?.error ||
-          data?.message ||
-          data?.errors?.[0]?.message ||
+        // safe extraction uten any
+        const msg =
+          (data &&
+            typeof data === 'object' &&
+            typeof (data as Record<string, unknown>).error === 'string' &&
+            (data as Record<string, unknown>).error) ||
+          (data &&
+            typeof data === 'object' &&
+            typeof (data as Record<string, unknown>).message === 'string' &&
+            (data as Record<string, unknown>).message) ||
           'Failed to send message';
-        throw new Error(message);
+        throw new Error(msg as string);
       }
 
       setSubmitted(true);
       setForm({ name: '', email: '', message: '' });
-    } catch (err: any) {
-      setError(err?.message || 'Something went wrong. Please try again later.');
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'Something went wrong. Please try again later.';
+      setError(msg);
     } finally {
       setIsSubmitting(false);
     }
@@ -69,7 +80,6 @@ export default function Contact() {
         <div className="bg-white dark:bg-gray-800 p-8 sm:p-12 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 max-w-2xl mx-auto">
           {!submitted ? (
             <form onSubmit={handleSubmit} className="grid gap-6 text-left" noValidate>
-              {/* Feilmelding fra server */}
               {error && (
                 <div
                   className="rounded-xl border border-red-200 dark:border-red-800 bg-red-50 dark:bg-red-900/30 p-4 text-red-800 dark:text-red-200"
