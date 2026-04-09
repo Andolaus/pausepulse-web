@@ -1,11 +1,12 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import logo from '/public/images/logo.png';
 
 type FooterProps = {
   onNavigate: (
-    section: 'about' | 'how' | 'features' | 'pricing' | 'contact' | 'earlyaccess' | 'privacy' | 'terms' | null
+    section: 'about' | 'how' | 'features' | 'pricing' | 'contact' | 'earlyaccess' | null
   ) => void;
 };
 
@@ -41,18 +42,18 @@ export default function Footer({ onNavigate }: FooterProps) {
           >
             Contact
           </button>
-          <button
-            onClick={() => onNavigate('privacy')}
+          <Link
+            href="/privacy-policy"
             className="font-medium text-sm sm:text-base text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-200 px-2 py-1"
           >
             Privacy Policy
-          </button>
-          <button
-            onClick={() => onNavigate('terms')}
+          </Link>
+          <Link
+            href="/terms"
             className="font-medium text-sm sm:text-base text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-200 px-2 py-1"
           >
             Terms of Service
-          </button>
+          </Link>
         </div>
 
         {/* Copyright */}

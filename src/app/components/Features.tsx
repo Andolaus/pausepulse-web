@@ -1,26 +1,31 @@
-import { FaLevelUpAlt, FaAward, FaCalendarCheck, FaUserEdit } from 'react-icons/fa';
+import { FaBolt, FaSpa, FaSlidersH, FaChartLine, FaBookOpen } from 'react-icons/fa';
 
 export default function Features() {
   const features = [
     {
-      icon: <FaLevelUpAlt size={32} role="img" aria-label="XP and level system icon" />,
-      title: 'XP & Level System',
-      description: 'Progress through levels, earn experience points, and unlock unique titles as you master your breath.',
+      icon: <FaBolt size={32} role="img" aria-label="Quick start icon" />,
+      title: 'Quick Start',
+      description: 'Begin a guided breathing session in seconds whenever you need a fast reset.',
     },
     {
-      icon: <FaAward size={32} role="img" aria-label="Badges and rewards icon" />,
-      title: 'Badges & Rewards',
-      description: 'Achieve special badges for reaching milestones, maintaining streaks, and completing challenges.',
+      icon: <FaSpa size={32} role="img" aria-label="Calm experience icon" />,
+      title: 'Calm Experience',
+      description: 'No stressful pressure mechanics, just a warm and supportive flow that helps you return to balance.',
     },
     {
-      icon: <FaCalendarCheck size={32} role="img" aria-label="Calendar check icon" />,
-      title: 'Daily & Weekly Goals',
-      description: 'Stay consistent with personalized daily goals and engaging weekly challenges to build lasting habits.',
+      icon: <FaSlidersH size={32} role="img" aria-label="Personalization icon" />,
+      title: 'Personalized Sessions',
+      description: 'Choose your visual style, guiding voice, soundscape, and session length for each moment.',
     },
     {
-      icon: <FaUserEdit size={32} role="img" aria-label="User customization icon" />,
-      title: 'Personalized Experience',
-      description: 'Tailor your journey with customizable breathing styles, voice options, and immersive visual themes.',
+      icon: <FaChartLine size={32} role="img" aria-label="Progress insights icon" />,
+      title: 'Insights Over Time',
+      description: 'Track your pauses, minutes, and rhythm with clear statistics and calendar-based progress.',
+    },
+    {
+      icon: <FaBookOpen size={32} role="img" aria-label="Learning icon" />,
+      title: 'Learn In The App',
+      description: 'Understand why breathing techniques work so it becomes easier to build a lasting habit.',
     },
   ];
 
@@ -35,10 +40,10 @@ export default function Features() {
           id="features-heading"
           className="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl mb-16 leading-tight"
         >
-          Unlock Your Calm: Core Features
+          Why Users Like PausePulse
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
           {features.map((f, i) => (
             <div
               key={i}

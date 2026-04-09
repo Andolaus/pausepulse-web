@@ -1,5 +1,3 @@
-'use client';
-
 export default function TermsOfService() {
   return (
     <section
@@ -14,25 +12,29 @@ export default function TermsOfService() {
       </h1>
 
       <p className="mb-4">
-        By using PausePulse, you agree to use the app responsibly and for personal well-being purposes only. All content,
-        graphics, and features are the intellectual property of PausePulse unless stated otherwise.
+        By using PausePulse, you agree to use the app responsibly and for personal well-being purposes only. PausePulse
+        is designed to support breathing and relaxation routines and does not replace medical care.
       </p>
       <p className="mb-4">
-        We reserve the right to change or remove content at any time. Use of the app does not constitute medical advice.
-        Always consult a professional if you have health-related concerns.
+        We may update features, pricing, or content over time to improve the service. Continued use of the app after
+        updates means you accept the current version of these terms.
       </p>
       <p className="mb-4">
-        Violation of terms may result in restricted access. For any questions, please reach out to{' '}
+        You are responsible for keeping your account details and device secure. Misuse of the app or violation of
+        applicable law may result in restricted access.
+      </p>
+      <p className="mb-4">
+        For questions about these terms, please reach out to{' '}
         <a
           href="mailto:andreas@pausepulse.com"
-          className="text-emerald-600 underline"
+          className="text-emerald-600 dark:text-emerald-400 underline"
           aria-label="Email Andreas at PausePulse"
         >
           andreas@pausepulse.com
         </a>.
       </p>
 
-      <p className="mt-12 text-sm text-gray-500 text-center">Last updated: July 2025</p>
+      <p className="mt-12 text-sm text-gray-500 text-center">Last updated: April 2026</p>
     </section>
   );
 }

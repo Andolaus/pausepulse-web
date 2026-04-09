@@ -32,12 +32,12 @@ export default function Header({ onNavigate }: HeaderProps) {
         </span>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-8 text-sm font-medium text-gray-700 dark:text-gray-300">
+        <nav className="hidden lg:flex gap-8 text-sm font-medium text-gray-700 dark:text-gray-300">
           <button
             onClick={() => handleNavClick('about')}
             className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-200"
           >
-            About Me
+            About
           </button>
           <button
             onClick={() => handleNavClick('how')}
@@ -49,13 +49,13 @@ export default function Header({ onNavigate }: HeaderProps) {
             onClick={() => handleNavClick('features')}
             className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-200"
           >
-            Features
+            Why PausePulse
           </button>
           <button
             onClick={() => handleNavClick('pricing')}
             className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-200"
           >
-            Pricing
+            Premium
           </button>
           <button
             onClick={() => handleNavClick('contact')}
@@ -68,15 +68,15 @@ export default function Header({ onNavigate }: HeaderProps) {
         {/* Desktop CTA */}
         <button
           onClick={() => handleNavClick('earlyaccess')}
-          className="hidden sm:inline-block bg-emerald-600 dark:bg-emerald-500 text-white px-6 py-3 rounded-full text-sm font-semibold shadow-md hover:bg-emerald-700 dark:hover:bg-emerald-600 transition"
+          className="hidden lg:inline-block bg-emerald-600 dark:bg-emerald-500 text-white px-6 py-3 rounded-full text-sm font-semibold shadow-md hover:bg-emerald-700 dark:hover:bg-emerald-600 transition"
         >
-          Join Early Access
+          Download the App
         </button>
 
         {/* Mobile Menu Toggle */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-gray-800 dark:text-gray-200 text-3xl p-1 rounded-md"
+          className="lg:hidden text-gray-800 dark:text-gray-200 text-3xl p-1 rounded-md"
           aria-label="Toggle menu"
         >
           {menuOpen ? <HiX /> : <HiMenu />}
@@ -85,13 +85,13 @@ export default function Header({ onNavigate }: HeaderProps) {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-800 shadow-lg px-6 pb-6 pt-4 border-t border-gray-100 dark:border-gray-700">
+        <div className="lg:hidden bg-white dark:bg-gray-800 shadow-lg px-6 pb-6 pt-4 border-t border-gray-100 dark:border-gray-700">
           <nav className="flex flex-col gap-4 text-base text-gray-700 dark:text-gray-200">
             <button
               onClick={() => handleNavClick('about')}
               className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
             >
-              About Me
+              About
             </button>
             <button
               onClick={() => handleNavClick('how')}
@@ -103,13 +103,13 @@ export default function Header({ onNavigate }: HeaderProps) {
               onClick={() => handleNavClick('features')}
               className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
             >
-              Features
+              Why PausePulse
             </button>
             <button
               onClick={() => handleNavClick('pricing')}
               className="hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors"
             >
-              Pricing
+              Premium
             </button>
             <button
               onClick={() => handleNavClick('contact')}
@@ -121,7 +121,7 @@ export default function Header({ onNavigate }: HeaderProps) {
               onClick={() => handleNavClick('earlyaccess')}
               className="mt-4 bg-emerald-600 dark:bg-emerald-500 text-white text-center py-3 rounded-full font-semibold shadow-md hover:bg-emerald-700 dark:hover:bg-emerald-600 transition"
             >
-              Join Early Access
+              Download the App
             </button>
           </nav>
         </div>

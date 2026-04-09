@@ -11,12 +11,12 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: 'PausePulse – Breathe. Grow. Level Up.',
-  description: 'PausePulse is a mindfulness app that turns breathing breaks into a gamified, rewarding habit. Launching soon on iOS and Android.',
+  title: 'PausePulse - Breathe Calmer, Think Clearer',
+  description: 'PausePulse is a breathing app for real life: guided sessions, calming soundscapes, and gentle progress without pressure.',
   metadataBase: new URL('https://pausepulse.app'),
   openGraph: {
     title: 'PausePulse',
-    description: 'Mindful breaks, gamified. Coming soon.',
+    description: 'A breathing app for real life with guided sessions and gentle, pressure-free progress.',
     url: 'https://pausepulse.app',
     siteName: 'PausePulse',
     images: [
@@ -31,8 +31,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'PausePulse – Breathe. Grow. Level Up.',
-    description: 'PausePulse is a mindfulness app that turns breathing breaks into a gamified, rewarding habit.',
+    title: 'PausePulse - Breathe Calmer, Think Clearer',
+    description: 'Guided breathing sessions, calming soundscapes, and steady habits without pressure.',
     creator: '@yourtwitterhandle',
     images: ['/og-image.jpg'],
   },

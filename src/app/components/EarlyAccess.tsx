@@ -39,10 +39,10 @@ export default function EarlyAccess() {
           id="earlyaccess-heading"
           className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white"
         >
-          Join the Early Access List
+          Download PausePulse
         </h2>
         <p className="text-lg text-gray-700 dark:text-gray-300">
-          Enter your email and be the first to know when PausePulse launches.
+          Enter your email and get notified as soon as PausePulse is available on iOS and Android.
         </p>
 
         <div aria-live="polite">
@@ -70,7 +70,7 @@ export default function EarlyAccess() {
                 aria-label="Subscribe to early access list"
                 className="px-8 py-3 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white rounded-full font-semibold shadow-md transition"
               >
-                Notify Me
+                Notify Me When It Launches
               </button>
             </form>
           ) : (

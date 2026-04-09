@@ -3,20 +3,26 @@ export default function HowItWorks() {
     {
       emoji: '🌀',
       emojiLabel: 'Swirl icon',
-      title: 'Start Your Session',
-      desc: 'Dive into a session by picking your preferred style, soothing voice, and ideal breathing duration.',
+      title: 'Choose Mode and Duration',
+      desc: 'Pick the breathing mode that fits your moment and set a session length that works for your day.',
     },
     {
       emoji: '🧘‍♀️',
       emojiLabel: 'Person meditating icon',
-      title: 'Embrace the Pause',
-      desc: 'Immerse yourself in guided audio and calming visuals designed to deepen your mindful break.',
+      title: 'Follow The Guided Session',
+      desc: 'Breathe with visual pacing, calming soundscapes, and optional voice guidance tailored to your style.',
     },
     {
-      emoji: '🌟',
-      emojiLabel: 'Star icon',
-      title: 'Level Up Your Calm',
-      desc: 'Watch your progress grow! Earn XP with each session, level up, and solidify your daily habit.',
+      emoji: '✅',
+      emojiLabel: 'Check mark icon',
+      title: 'Complete and Reflect',
+      desc: 'Finish your session and build steady progress with a gentle, no-pressure approach to consistency.',
+    },
+    {
+      emoji: '📅',
+      emojiLabel: 'Calendar icon',
+      title: 'Track Your Progress',
+      desc: 'See your growth in statistics and calendar views to better understand your breathing habits over time.',
     },
   ];
 
@@ -31,10 +37,10 @@ export default function HowItWorks() {
           id="how-heading"
           className="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl mb-16 leading-tight"
         >
-          How PausePulse Transforms Your Day
+          How It Works
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {steps.map((s, i) => (
             <div
               key={i}
