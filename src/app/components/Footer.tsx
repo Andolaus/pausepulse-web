@@ -54,6 +54,12 @@ export default function Footer({ onNavigate }: FooterProps) {
           >
             Terms of Service
           </Link>
+          <Link
+            href="/delete-data"
+            className="font-medium text-sm sm:text-base text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-200 px-2 py-1"
+          >
+            Delete Data
+          </Link>
         </div>
 
         {/* Copyright */}
