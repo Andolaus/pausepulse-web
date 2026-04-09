@@ -81,12 +81,12 @@ export default function Premium({ onStartPremium }: PremiumProps) {
                 <tr
                   key={i}
                   className={`border-t border-gray-200 dark:border-gray-700 ${
-                    i % 2 === 0 ? 'bg-white dark:bg-gray-800' : 'bg-gray-50 dark:bg-gray-750'
+                    i % 2 === 0 ? 'bg-white dark:bg-gray-800' : 'bg-gray-50 dark:bg-gray-700'
                   }`}
                 >
                   <td className="py-4 px-6">
                     <p className="font-medium text-gray-900 dark:text-white">{f.label}</p>
-                    <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{f.desc}</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-200 mt-1">{f.desc}</p>
                   </td>
                   <td className="py-4 px-6 text-center">
                     {f.free ? (
