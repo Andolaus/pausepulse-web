@@ -30,15 +30,13 @@ export default function Home() {
       <Header onNavigate={handleNavigate} />
       <div className="h-24" />
       <main className="bg-white text-gray-900 dark:bg-gray-900 dark:text-white min-h-screen">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Hero onNavigate={handleNavigate} />
-          <AboutMe onNavigate={() => handleNavigate('contact')} />
-          <HowItWorks />
-          <Features />
-          <Premium onStartPremium={() => handleNavigate('earlyaccess')} />
-          <EarlyAccess />
-          <Contact />
-        </div>
+        <Hero onNavigate={handleNavigate} />
+        <AboutMe onNavigate={() => handleNavigate('contact')} />
+        <HowItWorks />
+        <Features />
+        <Premium onStartPremium={() => handleNavigate('earlyaccess')} />
+        <EarlyAccess />
+        <Contact />
         <Footer onNavigate={handleNavigate} />
       </main>
     </>

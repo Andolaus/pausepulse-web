@@ -32,7 +32,7 @@ export default function EarlyAccess() {
     <section
       id="earlyaccess"
       aria-labelledby="earlyaccess-heading"
-      className="py-32 lg:py-44 px-6 sm:px-8 lg:px-12 text-center"
+      className="bg-gray-50 dark:bg-gray-800 py-32 lg:py-44 px-6 sm:px-8 lg:px-12 text-center"
     >
       <div className="max-w-2xl mx-auto space-y-8">
         <h2

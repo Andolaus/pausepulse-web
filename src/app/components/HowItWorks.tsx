@@ -28,7 +28,7 @@ export default function HowItWorks() {
 
   return (
     <section
-      className="bg-white dark:bg-gray-900 py-24 px-6 sm:py-32 lg:px-8"
+      className="bg-gray-50 dark:bg-gray-800 py-24 px-6 sm:py-32 lg:px-8"
       id="how"
       aria-labelledby="how-heading"
     >

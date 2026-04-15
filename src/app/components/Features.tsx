@@ -31,7 +31,7 @@ export default function Features() {
 
   return (
     <section
-      className="bg-white dark:bg-gray-900 py-24 px-6 sm:py-32 lg:px-8 border-b border-gray-100 dark:border-gray-800"
+      className="bg-gray-50 dark:bg-gray-800 py-24 px-6 sm:py-32 lg:px-8"
       id="features"
       aria-labelledby="features-heading"
     >
