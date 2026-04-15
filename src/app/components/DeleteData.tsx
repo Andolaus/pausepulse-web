@@ -13,7 +13,7 @@ export default function DeleteData() {
         PausePulse Data Deletion Request
       </h1>
       <p className="mb-10 text-sm text-center font-semibold text-sky-800 dark:text-sky-300">
-        Last updated: April 9, 2026
+        Last updated: April 15, 2026
       </p>
 
       <p className="mb-4">
@@ -50,8 +50,15 @@ export default function DeleteData() {
 
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900 dark:text-white">4. Data Stored On Your Device</h2>
       <p className="mb-4">
-        Most PausePulse usage data is stored locally on your device. You can remove this data by uninstalling the app
-        or clearing app storage on your device.
+        Most PausePulse usage data is stored locally on your device, including:
+      </p>
+      <ul className="list-disc pl-6 mb-4 space-y-2">
+        <li>Breathing preferences and session history</li>
+        <li>Custom voice recordings (if you recorded a personal breathing guide)</li>
+        <li>Photos or images selected or taken for use as a session background</li>
+      </ul>
+      <p className="mb-4">
+        You can remove this data by uninstalling the app or clearing app storage on your device.
       </p>
 
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900 dark:text-white">5. Billing and Legal Retention</h2>

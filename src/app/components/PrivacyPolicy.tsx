@@ -11,7 +11,7 @@ export default function PrivacyPolicy() {
         Privacy Policy for PausePulse
       </h1>
       <p className="mb-10 text-sm text-center font-semibold text-sky-800 dark:text-sky-300">
-        Last updated: April 8, 2026
+        Last updated: April 15, 2026
       </p>
 
       <p className="mb-4">
@@ -39,20 +39,44 @@ export default function PrivacyPolicy() {
         <li>Breathing preferences and session history</li>
         <li>Optional progress data (for example streaks, XP, badges)</li>
         <li>Optional voice recordings when you choose a custom voice feature</li>
+        <li>Optional photos or images you select or capture for use as a breathing session background</li>
       </ul>
       <p className="mb-4">This data is stored locally on your device (for example via AsyncStorage).</p>
 
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900 dark:text-white">
-        3. Microphone Permission (Android and iOS)
+        3. Device Permissions (Android and iOS)
       </h2>
+      <p className="mb-4">
+        PausePulse may request the following device permissions. All permissions are optional and feature-based.
+        If you do not grant a permission, core breathing features still work.
+      </p>
+
+      <h3 className="text-xl font-semibold mt-6 mb-2 text-gray-900 dark:text-white">Microphone</h3>
       <p className="mb-2">
-        PausePulse may request microphone access when you choose to record and use your own voice for breathing
-        guidance.
+        PausePulse uses your microphone to record a custom voice for personalized breathing guidance.
+        For example, you can record your own &quot;Breathe in&quot; and &quot;Breathe out&quot; prompts.
       </p>
       <ul className="list-disc pl-6 mb-4 space-y-2">
-        <li>Microphone access is optional and feature-based.</li>
-        <li>If you do not grant permission, core breathing features still work.</li>
-        <li>Your recordings are used to provide the selected in-app voice experience.</li>
+        <li>Microphone access is only requested when you use the custom voice recording feature.</li>
+        <li>Voice recordings are stored locally on your device and are not uploaded to any server.</li>
+      </ul>
+
+      <h3 className="text-xl font-semibold mt-6 mb-2 text-gray-900 dark:text-white">Photo Library</h3>
+      <p className="mb-2">
+        PausePulse uses your photo library so you can choose a personal image as your breathing session background.
+      </p>
+      <ul className="list-disc pl-6 mb-4 space-y-2">
+        <li>Photo library access is only requested when you choose to set a custom background image.</li>
+        <li>Selected images are stored locally on your device and are not uploaded to any server.</li>
+      </ul>
+
+      <h3 className="text-xl font-semibold mt-6 mb-2 text-gray-900 dark:text-white">Camera</h3>
+      <p className="mb-2">
+        PausePulse uses your camera so you can take a photo to use as your breathing session background.
+      </p>
+      <ul className="list-disc pl-6 mb-4 space-y-2">
+        <li>Camera access is only requested when you choose to take a photo for your background.</li>
+        <li>Photos taken are stored locally on your device and are not uploaded to any server.</li>
       </ul>
 
       <h2 className="text-2xl font-bold mt-10 mb-4 text-gray-900 dark:text-white">4. Analytics and Diagnostics</h2>
@@ -78,6 +102,7 @@ export default function PrivacyPolicy() {
         <li>Save your preferences and progress</li>
         <li>Support reminders and session features</li>
         <li>Enable optional custom voice recording features</li>
+        <li>Allow you to personalize your breathing session background with your own photos</li>
         <li>Provide premium access if purchased</li>
       </ul>
 
