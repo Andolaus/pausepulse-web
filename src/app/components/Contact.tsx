@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FaPaperPlane, FaCheckCircle } from 'react-icons/fa';
+import { FaCheckCircle } from 'react-icons/fa';
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
@@ -60,24 +60,26 @@ export default function Contact() {
 
   return (
     <section
-      className="bg-gradient-to-br from-emerald-50 to-purple-50 dark:from-gray-950 dark:to-purple-900 py-24 px-6 sm:py-32 lg:px-8 border-t border-gray-100 dark:border-gray-800"
+      className="bg-white dark:bg-gray-900 py-24 px-6 sm:py-32 lg:px-8 border-t border-gray-100 dark:border-gray-800"
       id="contact"
       aria-labelledby="contact-heading"
     >
       <div className="max-w-4xl mx-auto text-center">
+        <p className="text-xs font-semibold tracking-widest uppercase text-emerald-600 dark:text-emerald-400 mb-3">
+          Contact
+        </p>
         <h2
           id="contact-heading"
-          className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-6 flex items-center justify-center gap-4"
+          className="text-4xl sm:text-5xl font-extrabold text-gray-900 dark:text-white mb-4 tracking-tight"
         >
-          <FaPaperPlane className="text-emerald-600 dark:text-emerald-400 text-4xl sm:text-5xl" role="img" aria-label="Paper plane icon" />
           Let&apos;s Connect
         </h2>
 
-        <p className="text-lg text-gray-700 dark:text-gray-300 mb-12 max-w-2xl mx-auto">
+        <p className="text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto">
           Have a question, feedback, or just want to say hi? I&apos;d love to hear from you.
         </p>
 
-        <div className="bg-white dark:bg-gray-800 p-8 sm:p-12 rounded-3xl shadow-2xl border border-gray-100 dark:border-gray-700 max-w-2xl mx-auto">
+        <div className="bg-gray-50 dark:bg-gray-800 p-8 sm:p-12 rounded-2xl border border-gray-100 dark:border-gray-700 max-w-2xl mx-auto text-left">
           {!submitted ? (
             <form onSubmit={handleSubmit} className="grid gap-6 text-left" noValidate>
               {error && (
