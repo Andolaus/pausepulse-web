@@ -53,6 +53,18 @@ export default function PausePulseAppPage() {
             </svg>
             Download on App Store
           </a>
+          <a
+            href="https://play.google.com/store/apps/details?id=com.pausepulse.app"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Download PausePulse on Google Play"
+            className="inline-flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 text-white font-semibold px-8 py-4 rounded-full shadow-lg transition-all duration-200 hover:scale-105 focus:outline-none focus:ring-4 focus:ring-emerald-300 focus:ring-opacity-75 text-lg"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5" aria-hidden="true">
+              <path d="M3 20.5v-17c0-.59.34-1.11.84-1.35L13.69 12 3.84 21.85C3.34 21.6 3 21.09 3 20.5m13.81-5.38L6.05 21.34l8.49-8.49 2.27 2.27M20.16 10.81c.34.27.59.69.59 1.19s-.25.92-.59 1.19l-2.27 1.31-2.5-2.5 2.5-2.5 2.27 1.31M6.05 2.66l10.76 6.22-2.27 2.27-8.49-8.49Z"/>
+            </svg>
+            Get it on Google Play
+          </a>
         </div>
 
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">

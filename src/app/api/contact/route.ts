@@ -1,20 +1,7 @@
 import { NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
 
 export const runtime = 'nodejs';
-
-function getErrMsg(data: unknown): string | undefined {
-  if (data && typeof data === 'object') {
-    const obj = data as Record<string, unknown>;
-    if (typeof obj.error === 'string') return obj.error;
-    if (typeof obj.message === 'string') return obj.message;
-    const errors = obj.errors;
-    if (Array.isArray(errors) && errors.length > 0) {
-      const first = errors[0] as Record<string, unknown>;
-      if (typeof first?.message === 'string') return first.message;
-    }
-  }
-  return undefined;
-}
 
 export async function POST(req: Request) {
   try {
@@ -28,48 +15,39 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Missing fields' }, { status: 400 });
     }
 
-    const apiKey = process.env.BREVO_API_KEY;
-    const templateId = Number(process.env.BREVO_TEMPLATE_ID);
-    const senderEmail = process.env.BREVO_SENDER_EMAIL;
-    const toEmail = process.env.CONTACT_TO_EMAIL;
+    const smtpUser = process.env.SMTP_USER;
+    const smtpPass = process.env.SMTP_PASS;
 
-    if (!apiKey || !templateId || !senderEmail || !toEmail) {
-      return NextResponse.json(
-        {
-          error:
-            'Server misconfigured: missing one or more of BREVO_API_KEY, BREVO_TEMPLATE_ID, BREVO_SENDER_EMAIL, CONTACT_TO_EMAIL',
-        },
-        { status: 500 },
-      );
+    if (!smtpUser || !smtpPass) {
+      console.error('Missing SMTP_USER or SMTP_PASS environment variables');
+      return NextResponse.json({ error: 'Server misconfigured' }, { status: 500 });
     }
 
-    const response = await fetch('https://api.brevo.com/v3/smtp/email', {
-      method: 'POST',
-      headers: {
-        'api-key': apiKey,
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: smtpUser,
+        pass: smtpPass,
       },
-      body: JSON.stringify({
-        sender: { name: 'PausePulse', email: senderEmail },
-        to: [{ email: toEmail, name: 'Andreas' }],
-        templateId,
-        params: { name, email, message },
-      }),
     });
 
-    let data: unknown = null;
-    try {
-      data = await response.json();
-    } catch {
-      /* tom body */
-    }
-
-    if (!response.ok) {
-      const msg = getErrMsg(data) ?? 'Send failed';
-      console.error('Brevo send error', response.status, data);
-      return NextResponse.json({ error: msg }, { status: 500 });
-    }
+    await transporter.sendMail({
+      from: `"PausePulse" <${smtpUser}>`,
+      to: 'andreas@pausepulse.com',
+      replyTo: email,
+      subject: `New message from ${name}`,
+      text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+      html: `
+        <div style="font-family:sans-serif;max-width:600px;margin:0 auto">
+          <h2 style="color:#059669">New contact message</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+          <hr style="border:none;border-top:1px solid #e5e7eb;margin:16px 0"/>
+          <p><strong>Message:</strong></p>
+          <p style="white-space:pre-wrap">${message}</p>
+        </div>
+      `,
+    });
 
     return NextResponse.json({ success: true });
   } catch (err: unknown) {
