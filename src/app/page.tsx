@@ -2,6 +2,7 @@
 
 import Header from './components/Header';
 import Hero from './components/Hero';
+import Stats from './components/Stats';
 import AboutMe from './components/AboutMe';
 import HowItWorks from './components/HowItWorks';
 import Features from './components/Features';
@@ -28,9 +29,9 @@ export default function Home() {
   return (
     <>
       <Header onNavigate={handleNavigate} />
-      <div className="h-24" />
-      <main className="bg-white text-gray-900 dark:bg-gray-900 dark:text-white min-h-screen">
+      <main className="bg-white text-gray-900 dark:bg-gray-950 dark:text-white min-h-screen">
         <Hero onNavigate={handleNavigate} />
+        <Stats />
         <AboutMe onNavigate={() => handleNavigate('contact')} />
         <HowItWorks />
         <Features />
@@ -42,3 +43,4 @@ export default function Home() {
     </>
   );
 }
+

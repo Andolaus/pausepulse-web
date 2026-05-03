@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #0f172a;
+  --brand: #059669;       /* emerald-600 */
+  --brand-soft: #d1fae5;  /* emerald-100 */
+  --brand-deep: #064e3b;  /* emerald-900 */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -25,7 +28,10 @@ body {
   letter-spacing: -0.01em;
 }
 
-
+/* Smooth scroll target offset under fixed header */
+section[id] {
+  scroll-margin-top: 6rem;
+}
 
 a {
   color: inherit;
@@ -35,5 +41,117 @@ a {
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+/* ----------- Custom utilities ----------- */
+
+/* Animated soft aurora blobs in the background */
+@keyframes aurora-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50%      { transform: translate3d(40px, -30px, 0) scale(1.08); }
+}
+
+.aurora-blob {
+  animation: aurora-drift 14s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Breathing pulse — used in hero badge / orb */
+@keyframes breathe {
+  0%, 100% { transform: scale(1);   opacity: 0.55; }
+  50%      { transform: scale(1.15); opacity: 1;   }
+}
+
+.breathe-soft {
+  animation: breathe 4.5s ease-in-out infinite;
+}
+
+/* Subtle floating motion for hero phone */
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+
+.float-soft {
+  animation: float-soft 6s ease-in-out infinite;
+}
+
+/* Slow shimmer for premium ribbons */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    110deg,
+    rgba(255,255,255,0) 30%,
+    rgba(255,255,255,0.35) 50%,
+    rgba(255,255,255,0) 70%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3.5s linear infinite;
+}
+
+/* Reveal-on-load fade up — used by sections lacking JS */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fade-up 0.8s ease-out both;
+}
+
+/* Soft dotted grid background */
+.bg-grid-soft {
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(15,23,42,0.06) 1px, transparent 0);
+  background-size: 28px 28px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .bg-grid-soft {
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(255,255,255,0.05) 1px, transparent 0);
+  }
+}
+
+/* Brand gradient text helper */
+.text-gradient-brand {
+  background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Premium glass card */
+.glass-card {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(15,23,42,0.06);
+}
+
+@media (prefers-color-scheme: dark) {
+  .glass-card {
+    background: rgba(17,24,39,0.55);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+}
+
+/* Hide scrollbars on horizontal-scroll rows */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob,
+  .breathe-soft,
+  .float-soft,
+  .shimmer,
+  .fade-up {
+    animation: none !important;
   }
 }

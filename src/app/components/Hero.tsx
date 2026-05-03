@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { FaStar, FaApple, FaGooglePlay } from 'react-icons/fa';
 
 type HeroProps = {
   onNavigate: (section: 'about' | 'how' | 'features' | 'pricing' | 'contact' | 'earlyaccess' | null) => void;
@@ -9,68 +10,99 @@ type HeroProps = {
 export default function Hero({ onNavigate }: HeroProps) {
   return (
     <section
-      className="relative bg-white dark:bg-gray-900 overflow-hidden py-24 lg:py-32"
+      className="relative isolate overflow-hidden pt-20 pb-24 lg:pt-28 lg:pb-32 bg-white dark:bg-gray-950"
       aria-labelledby="hero-heading"
     >
-      {/* Subtle background accent */}
-      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-emerald-100/60 dark:bg-emerald-900/20 blur-3xl" />
-        <div className="absolute -bottom-20 -left-20 w-[400px] h-[400px] rounded-full bg-emerald-50/80 dark:bg-emerald-900/10 blur-2xl" />
+      {/* Background — aurora + soft grid */}
+      <div className="absolute inset-0 -z-10 pointer-events-none" aria-hidden="true">
+        <div className="absolute inset-0 bg-grid-soft opacity-60" />
+        <div className="aurora-blob absolute -top-40 -right-32 w-[700px] h-[700px] rounded-full bg-gradient-to-br from-emerald-300/40 via-teal-200/30 to-transparent dark:from-emerald-500/20 dark:via-teal-500/10 blur-3xl" />
+        <div
+          className="aurora-blob absolute -bottom-32 -left-24 w-[520px] h-[520px] rounded-full bg-gradient-to-tr from-emerald-100/70 to-transparent dark:from-emerald-700/15 blur-3xl"
+          style={{ animationDelay: '-7s' }}
+        />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white dark:from-gray-950 to-transparent" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-16">
+      <div className="relative max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 grid lg:grid-cols-12 items-center gap-12 lg:gap-8">
 
         {/* Text column */}
-        <div className="text-center lg:text-left max-w-xl">
+        <div className="lg:col-span-7 text-center lg:text-left fade-up">
 
-          {/* Platform badge */}
-          <div className="inline-flex items-center gap-2 bg-emerald-50 dark:bg-emerald-900/40 border border-emerald-200 dark:border-emerald-700 text-emerald-700 dark:text-emerald-300 text-xs font-semibold px-4 py-1.5 rounded-full mb-6 tracking-wide uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-            Now available on iOS &amp; Android
+          {/* Live badge */}
+          <div className="inline-flex items-center gap-2 bg-white/70 dark:bg-gray-900/60 backdrop-blur border border-emerald-200/70 dark:border-emerald-700/50 text-emerald-700 dark:text-emerald-300 text-xs font-semibold px-4 py-1.5 rounded-full mb-7 tracking-wide shadow-sm">
+            <span className="relative flex w-2 h-2">
+              <span className="absolute inline-flex w-full h-full rounded-full bg-emerald-400 opacity-75 animate-ping" />
+              <span className="relative inline-flex w-2 h-2 rounded-full bg-emerald-500" />
+            </span>
+            <span className="uppercase tracking-widest">Live on iOS &amp; Android</span>
           </div>
 
           <h1
             id="hero-heading"
-            className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 dark:text-white leading-[1.05] tracking-tight mb-6"
+            className="text-5xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 dark:text-white leading-[1.02] tracking-tight mb-6"
           >
-            Find Calm
+            Find calm
             <br />
-            <span className="text-emerald-600 dark:text-emerald-400">In Seconds</span>
+            in <span className="text-gradient-brand">60 seconds.</span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mb-10 leading-relaxed">
-            Guided breathing sessions, calming soundscapes, and gentle progress — no stress, no pressure.
+          <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 mb-8 leading-relaxed max-w-xl mx-auto lg:mx-0">
+            Guided breathing, calming soundscapes, and gentle progress — backed by real techniques.
+            No streaks. No pressure. Just better days.
           </p>
 
-          <div className="flex flex-col sm:flex-row sm:justify-start items-center gap-4">
+          {/* Social proof */}
+          <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-6 gap-y-3 mb-8 text-sm text-gray-600 dark:text-gray-400">
+            <div className="flex items-center gap-2">
+              <div className="flex text-amber-400" aria-label="5 out of 5 stars">
+                {[0, 1, 2, 3, 4].map((i) => (
+                  <FaStar key={i} className="w-4 h-4" aria-hidden="true" />
+                ))}
+              </div>
+              <span className="font-semibold text-gray-900 dark:text-white">5.0</span>
+              <span>on the App Store</span>
+            </div>
+            <div className="hidden sm:flex items-center gap-2">
+              <span className="w-1 h-1 rounded-full bg-gray-400" aria-hidden="true" />
+              <span>
+                <span className="font-semibold text-gray-900 dark:text-white">Just launched</span> · be among the first
+              </span>
+            </div>
+          </div>
+
+          {/* CTAs */}
+          <div className="flex flex-col sm:flex-row sm:justify-start justify-center items-stretch sm:items-center gap-3">
             <a
               href="https://apps.apple.com/us/app/pausepulse/id6761433093"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Download PausePulse on the App Store"
-              className="inline-flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-700 text-white px-7 py-3.5 rounded-full font-semibold shadow-lg transition-all duration-200 hover:scale-105 text-base"
+              className="group inline-flex items-center justify-center gap-3 bg-gray-900 hover:bg-black text-white px-6 py-3.5 rounded-2xl font-semibold shadow-xl shadow-black/10 hover:shadow-emerald-500/30 hover:-translate-y-0.5 transition-all duration-300 border border-gray-900"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5" aria-hidden="true">
-                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11"/>
-              </svg>
-              Download on App Store
+              <FaApple className="w-6 h-6" aria-hidden="true" />
+              <div className="text-left leading-tight">
+                <div className="text-[10px] font-medium opacity-70">Download on the</div>
+                <div className="text-base font-bold">App Store</div>
+              </div>
             </a>
             <a
               href="https://play.google.com/store/apps/details?id=com.pausepulse.app"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Download PausePulse on Google Play"
-              className="inline-flex items-center gap-2.5 bg-emerald-600 hover:bg-emerald-700 text-white px-7 py-3.5 rounded-full font-semibold shadow-lg transition-all duration-200 hover:scale-105 text-base"
+              className="group inline-flex items-center justify-center gap-3 bg-gray-900 hover:bg-black text-white px-6 py-3.5 rounded-2xl font-semibold shadow-xl shadow-black/10 hover:shadow-emerald-500/30 hover:-translate-y-0.5 transition-all duration-300 border border-gray-900"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5" aria-hidden="true">
-                <path d="M3 20.5v-17c0-.59.34-1.11.84-1.35L13.69 12 3.84 21.85C3.34 21.6 3 21.09 3 20.5m13.81-5.38L6.05 21.34l8.49-8.49 2.27 2.27M20.16 10.81c.34.27.59.69.59 1.19s-.25.92-.59 1.19l-2.27 1.31-2.5-2.5 2.5-2.5 2.27 1.31M6.05 2.66l10.76 6.22-2.27 2.27-8.49-8.49Z"/>
-              </svg>
-              Get it on Google Play
+              <FaGooglePlay className="w-5 h-5" aria-hidden="true" />
+              <div className="text-left leading-tight">
+                <div className="text-[10px] font-medium opacity-70">Get it on</div>
+                <div className="text-base font-bold">Google Play</div>
+              </div>
             </a>
             <button
               onClick={() => onNavigate('pricing')}
               aria-label="See PausePulse Premium"
-              className="inline-flex items-center gap-2 text-gray-700 dark:text-gray-300 hover:text-emerald-600 dark:hover:text-emerald-400 font-medium text-base transition-colors duration-200"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-2xl text-gray-700 dark:text-gray-300 hover:text-emerald-700 dark:hover:text-emerald-400 font-medium transition-colors duration-200 border border-transparent hover:border-emerald-200 dark:hover:border-emerald-800"
             >
               See Premium
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4" aria-hidden="true">
@@ -78,19 +110,53 @@ export default function Hero({ onNavigate }: HeroProps) {
               </svg>
             </button>
           </div>
+
+          {/* Trust microcopy */}
+          <p className="mt-6 text-xs text-gray-500 dark:text-gray-500">
+            Free to download · Privacy-first · No account required
+          </p>
         </div>
 
         {/* Image column */}
-        <div className="w-full flex justify-center lg:justify-end">
-          <Image
-            src="/images/hero-app-preview2.png"
-            alt="PausePulse app preview"
-            width={2400}
-            height={1400}
-            sizes="(max-width: 640px) 320px, (max-width: 1024px) 400px, 480px"
-            className="w-full max-w-xs sm:max-w-sm md:max-w-sm lg:max-w-md h-auto drop-shadow-2xl rounded-2xl"
-            priority
-          />
+        <div className="lg:col-span-5 w-full flex justify-center lg:justify-end fade-up" style={{ animationDelay: '0.15s' }}>
+          <div className="relative">
+            {/* Glow */}
+            <div className="absolute inset-0 -z-10 m-8 rounded-[3rem] bg-gradient-to-br from-emerald-400/30 via-teal-300/20 to-emerald-500/20 blur-3xl" aria-hidden="true" />
+
+            {/* Floating badges */}
+            <div className="hidden md:flex absolute -left-6 top-12 z-10 items-center gap-2.5 glass-card px-3.5 py-2.5 rounded-2xl shadow-xl float-soft" aria-hidden="true">
+              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 breathe-soft" />
+              <div className="leading-tight">
+                <div className="text-[10px] font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">Inhale</div>
+                <div className="text-xs font-medium text-gray-800 dark:text-gray-200">4·7·8 method</div>
+              </div>
+            </div>
+            <div
+              className="hidden md:flex absolute -right-4 bottom-16 z-10 items-center gap-2.5 glass-card px-3.5 py-2.5 rounded-2xl shadow-xl float-soft"
+              style={{ animationDelay: '-3s' }}
+              aria-hidden="true"
+            >
+              <div className="w-7 h-7 rounded-lg bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center text-emerald-700 dark:text-emerald-400">
+                <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor" aria-hidden="true">
+                  <path d="M3 13h2v-2H3v2zm4 4h2V7H7v10zm4 4h2V3h-2v18zm4-4h2V7h-2v10zm4-4h2v-2h-2v2z" />
+                </svg>
+              </div>
+              <div className="leading-tight">
+                <div className="text-[10px] font-semibold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">Today</div>
+                <div className="text-xs font-medium text-gray-800 dark:text-gray-200">3 calm minutes</div>
+              </div>
+            </div>
+
+            <Image
+              src="/images/hero-app-preview2.png"
+              alt="PausePulse app preview"
+              width={2400}
+              height={1400}
+              sizes="(max-width: 640px) 280px, (max-width: 1024px) 380px, 460px"
+              className="relative w-full max-w-[260px] sm:max-w-xs md:max-w-sm lg:max-w-md h-auto drop-shadow-[0_25px_50px_rgba(5,150,105,0.25)] float-soft"
+              priority
+            />
+          </div>
         </div>
       </div>
     </section>

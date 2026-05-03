@@ -4,34 +4,34 @@ export default function HowItWorks() {
   const steps = [
     {
       icon: <LuSlidersHorizontal size={22} aria-hidden="true" />,
-      title: 'Choose Mode and Duration',
-      desc: 'Pick the breathing mode that fits your moment and set a session length that works for your day.',
+      title: 'Choose your moment',
+      desc: 'Pick a breathing mode and a length that fits — from a quick 60-second reset to a full unwind.',
     },
     {
       icon: <LuWind size={22} aria-hidden="true" />,
-      title: 'Follow The Guided Session',
-      desc: 'Breathe with visual pacing, calming soundscapes, and optional voice guidance tailored to your style.',
+      title: 'Breathe with guidance',
+      desc: 'Follow visual pacing, calming soundscapes, and an optional guiding voice tuned to you.',
     },
     {
       icon: <LuCircleCheck size={22} aria-hidden="true" />,
-      title: 'Complete and Reflect',
-      desc: 'Finish your session and build steady progress with a gentle, no-pressure approach to consistency.',
+      title: 'Land back lighter',
+      desc: 'Finish refreshed. No streaks, no guilt — just a small, steady investment in yourself.',
     },
     {
       icon: <LuChartBar size={22} aria-hidden="true" />,
-      title: 'Track Your Progress',
-      desc: 'See your growth in statistics and calendar views to better understand your breathing habits over time.',
+      title: 'See gentle progress',
+      desc: 'Track your pauses on a clear calendar so you can spot what works without obsessing.',
     },
   ];
 
   return (
     <section
-      className="bg-white dark:bg-gray-900 py-24 px-6 sm:py-32 lg:px-8 border-t border-gray-100 dark:border-gray-800"
+      className="bg-white dark:bg-gray-950 py-24 px-6 sm:py-32 lg:px-8 border-t border-gray-100 dark:border-gray-800"
       id="how"
       aria-labelledby="how-heading"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 max-w-2xl mx-auto">
           <p className="text-xs font-semibold tracking-widest uppercase text-emerald-600 dark:text-emerald-400 mb-3">
             How it works
           </p>
@@ -39,32 +39,43 @@ export default function HowItWorks() {
             id="how-heading"
             className="text-4xl font-extrabold text-gray-900 dark:text-white sm:text-5xl leading-tight tracking-tight"
           >
-            Four simple steps
+            Four breaths to a calmer you
           </h2>
+          <p className="mt-4 text-base sm:text-lg text-gray-600 dark:text-gray-400">
+            Designed to remove every excuse for skipping your pause.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map((s, i) => (
-            <div
-              key={i}
-              className="relative bg-gray-50 dark:bg-gray-800 p-7 rounded-2xl border border-gray-100 dark:border-gray-700
-                         flex flex-col
-                         hover:border-emerald-200 dark:hover:border-emerald-700 hover:shadow-lg transition-all duration-300"
-            >
-              {/* Step number + icon row */}
-              <div className="flex items-center gap-3 mb-5">
-                <span className="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/40 border border-emerald-200 dark:border-emerald-700 w-7 h-7 rounded-full flex items-center justify-center tabular-nums">
-                  {i + 1}
-                </span>
-                <span className="text-emerald-600 dark:text-emerald-400">
-                  {s.icon}
-                </span>
-              </div>
+        <div className="relative">
+          {/* Connecting line on desktop */}
+          <div
+            className="hidden lg:block absolute top-12 left-[12%] right-[12%] h-px bg-gradient-to-r from-transparent via-emerald-300 dark:via-emerald-800 to-transparent"
+            aria-hidden="true"
+          />
 
-              <h3 className="text-base font-bold mb-2 text-gray-900 dark:text-white">{s.title}</h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{s.desc}</p>
-            </div>
-          ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 relative">
+            {steps.map((s, i) => (
+              <div
+                key={i}
+                className="relative group bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-7 hover:border-emerald-200 dark:hover:border-emerald-800 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
+              >
+                {/* Number medallion */}
+                <div className="relative w-12 h-12 mb-6">
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-400 to-emerald-600 shadow-lg shadow-emerald-500/30 group-hover:shadow-emerald-500/50 transition-shadow" />
+                  <div className="absolute inset-0 flex items-center justify-center text-white font-bold text-base tabular-nums">
+                    {i + 1}
+                  </div>
+                </div>
+
+                <div className="mb-3 inline-flex items-center justify-center w-9 h-9 rounded-lg bg-emerald-50 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-400 border border-emerald-100 dark:border-emerald-800">
+                  {s.icon}
+                </div>
+
+                <h3 className="text-base font-bold mb-2 text-gray-900 dark:text-white">{s.title}</h3>
+                <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{s.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
